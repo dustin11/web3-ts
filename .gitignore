@@ -1,0 +1,27 @@
+# ========== 编译输出 ==========
+dist/          # 编译输出目录
+# *.js           # 所有JS文件（保留TS源码时）
+*.js.map       # SourceMap文件
+*.d.ts         # 类型声明文件
+
+# ========== 依赖管理 ==========
+node_modules/  # 依赖目录
+.yarn_cache/   # Yarn缓存
+package-lock.json # npm锁文件
+yarn.lock      # Yarn锁文件
+
+# ========== 开发环境 ==========
+.env           # 环境变量文件
+.env.local     # 本地环境变量
+*.log          # 日志文件
+.DS_Store      # Mac系统文件
+Thumbs.db      # Windows缩略图
+
+# ========== IDE配置 ==========
+.vscode/       # VS Code配置
+.idea/         # IntelliJ配置
+*.iml          # IDE模块文件
+
+# ========== 测试相关 ==========
+coverage/      # 测试覆盖率报告
+*.test.js      # 生成的测试JS文件
