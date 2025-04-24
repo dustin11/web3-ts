@@ -11,7 +11,7 @@ package-lock.json
 yarn.lock
 
 # ========== 开发环境 ==========
-.env
+# .env
 .env.local
 *.log
 .DS_Store 
