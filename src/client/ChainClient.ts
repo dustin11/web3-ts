@@ -36,13 +36,19 @@ export abstract class ChainClient {
     });
   }
 
+  get viemAccount() {
+    return privateKeyToAccount(this.privateKey);
+  }
+
   get viemWalletClient() {
     return createWalletClient({
-      account: privateKeyToAccount(this.privateKey),
+      account: this.viemAccount,
       chain: this.chainConfig,
       transport: http()
     });
   }
+
+
 
   // 通用方法
   async getBalance(address?: string): Promise<string> {
