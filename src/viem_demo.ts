@@ -1,5 +1,5 @@
 
-import { parseEther, Address } from 'viem'
+import { parseEther, Address, Account, getContract } from 'viem'
 import { ABI, BYTECODE } from "./config/storage";
 import { AssetHubClient } from "./client/AssetHubClient";
 
@@ -25,6 +25,46 @@ export class ViemDemo extends AssetHubClient{
         }
         const txHash = await walletClient.sendTransaction(transfer)
         console.log(`tx hash is ${txHash}`)
+    }
+
+    async contract(){
+        const client = this.viemPublicClient
+        //部署合约
+        const walletClient = this.viemWalletClient
+        const txHash = await walletClient.deployContract({
+            chain: this.chainConfig,
+            abi: ABI, 
+            bytecode: BYTECODE, 
+            args: []
+        })
+        const recieipt = await client.waitForTransactionReceipt({ hash: txHash })
+        const contractAddress = recieipt.contractAddress
+        console.log(`contract address is ${contractAddress}`)
+        if (typeof contractAddress !== 'string' || !contractAddress.startsWith('0x')) {
+            throw new Error('Invalid contract address: ' + contractAddress);
+        }
+        //读取合约
+        const number = await client.readContract({ address: contractAddress as Address, abi: ABI, functionName: 'retrieve', args: [] })
+        console.log(`number is ${number}`)
+        //写合约
+        const contract = getContract({ address: contractAddress as Address, abi: ABI, client: walletClient})
+        const tx = await contract.write.store([100])
+        console.log(`write tx hash is ${tx}`)
+        //验证结果
+        const number1 = await client.readContract({ address: contractAddress as Address, abi: ABI, functionName: 'retrieve', args: [] })
+        console.log(`number is ${number1}`)
+    }
+
+    async onBlock(){
+        const client = this.viemPublicClient
+        client.watchBlockNumber({
+            onBlockNumber: (blockNumber) => {
+                console.log(`current block: ${blockNumber}`)
+            },
+            onError: (error) => {
+                console.error('Error watching block number:', error);
+            }
+        })
     }
 
 }

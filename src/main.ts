@@ -9,7 +9,9 @@ async function main() {
     // ethers.onBlock();
 
     const viem = new ViemDemo();
-    viem.account();
+    // viem.account();
+    // viem.contract();
+    viem.onBlock();
     
 }
 
