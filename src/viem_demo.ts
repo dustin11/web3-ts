@@ -1,7 +1,7 @@
 
 import { parseEther, Address, Account, getContract } from 'viem'
 import { ABI, BYTECODE } from "./config/storage";
-import { AssetHubClient } from "./client/AssetHubClient";
+import { AssetHubClient } from "./client/asset_hub_client";
 
 export class ViemDemo extends AssetHubClient{
 

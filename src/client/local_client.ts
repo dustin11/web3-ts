@@ -1,6 +1,6 @@
 import { ChainConst } from '../config/config';
 import { defineChain } from 'viem'
-import { ChainClient }  from './ChainClient'
+import { ChainClient }  from './chain_client'
 
 export class LocalClient extends ChainClient {
   protected chainConfig = defineChain({

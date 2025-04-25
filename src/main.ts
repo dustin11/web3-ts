@@ -1,4 +1,4 @@
-import { EthersDemo } from "./EthersDemo"
+import { EthersDemo } from "./ethers_demo"
 import { ViemDemo } from "./viem_demo";
 
 async function main() {

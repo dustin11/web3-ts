@@ -1,5 +1,5 @@
 import { Contract, ethers, Wallet } from "ethers"
-import { AssetHubClient } from "./client/AssetHubClient";
+import { AssetHubClient } from "./client/asset_hub_client";
 import { ABI, BYTECODE } from "./config/storage";
 
 export class EthersDemo extends AssetHubClient{
