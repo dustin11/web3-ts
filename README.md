@@ -2,15 +2,19 @@
 ts 使用ethers、viem库，钱包操作，合约发布等
 
 ## 执行
+<pre>
 yarn install  
 yarn start
+</pre>
 
 ## ethers执行结果
-<pre>
+```typescript
 const ethers = new EthersDemo();  
 await ethers.account();  
 await ethers.contract();  
 ethers.onBlock();  
+```
+<pre>
 print:  
     balance is 17618742280549000000, ethValue is 17.618742280549  
     nonce is 48  
@@ -26,11 +30,13 @@ print:
     成功停止监听  
 </pre>
 ## viem执行结果
-<pre>
+```typescript
 const viem = new ViemDemo();
 await viem.account();
 await viem.contract();
 viem.onBlock();
+```
+<pre>
 print:
     balance is 17806250006555000000  
     nonce is 44  
