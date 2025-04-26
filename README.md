@@ -27,11 +27,11 @@ print:
 </pre>
 ## viem执行结果
 <pre>
-const viem = new ViemDemo();  
-await viem.account();  
-await viem.contract();  
-viem.onBlock();  
-print:  
+const viem = new ViemDemo();
+await viem.account();
+await viem.contract();
+viem.onBlock();
+print:
     balance is 17806250006555000000  
     nonce is 44  
     tx hash is 0x67aa5cd277205e87678096fbf2692c7f8119b37d944c7c2a892e911b2f450f81  
