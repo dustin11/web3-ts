@@ -15,7 +15,7 @@ export class ViemDemo extends AssetHubClient{
         const nonce = await client.getTransactionCount({ address: addr })
         console.log(`nonce is ${nonce}`)
         //转账
-        console.log(`chain: `, this.chainConfig)
+        // console.log(`chain: `, this.chainConfig)
         const walletClient = this.viemWalletClient        
         const transfer = {
             chain: this.chainConfig,
@@ -25,6 +25,9 @@ export class ViemDemo extends AssetHubClient{
         }
         const txHash = await walletClient.sendTransaction(transfer)
         console.log(`tx hash is ${txHash}`)
+        // 等待交易确认
+        const receipt = await client.waitForTransactionReceipt({ hash: txHash});
+        console.log('Confirmed in block:', receipt.blockNumber);
     }
 
     async contract(){
@@ -50,6 +53,9 @@ export class ViemDemo extends AssetHubClient{
         const contract = getContract({ address: contractAddress as Address, abi: ABI, client: walletClient})
         const tx = await contract.write.store([100])
         console.log(`write tx hash is ${tx}`)
+        const receipt = await client.waitForTransactionReceipt({ hash: tx});
+        console.log('Confirmed in block:', receipt.blockNumber);
+
         //验证结果
         const number1 = await client.readContract({ address: contractAddress as Address, abi: ABI, functionName: 'retrieve', args: [] })
         console.log(`number is ${number1}`)

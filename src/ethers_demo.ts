@@ -18,7 +18,7 @@ export class EthersDemo extends AssetHubClient{
         const transfer = {
             to: "0x0A75f01b75d23eAF7Bf291A0EC1aD436e49852c3",
             value: ethers.parseEther("0.1"),
-            // nonce: nonce,
+            nonce: nonce,
         }
         // const gasPrice = await this.ethersProvider.getFeeData()
         const tx = await wallet.sendTransaction(transfer)
