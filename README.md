@@ -6,7 +6,7 @@ yarn install
 yarn start
 
 ## ethers执行结果
-｀｀｀
+<pre>
 const ethers = new EthersDemo();  
 await ethers.account();  
 await ethers.contract();  
@@ -24,9 +24,9 @@ print:
     当前基准费用: 2200n  
     current block: 11535862  
     成功停止监听  
-｀｀｀
+</pre>
 ## viem执行结果
-｀｀｀
+<pre>
 const viem = new ViemDemo();  
 await viem.account();  
 await viem.contract();  
@@ -43,4 +43,4 @@ print:
     number is 100  
     current block: 11535814  
     current block: 11535815  
-｀｀｀
+</pre>
